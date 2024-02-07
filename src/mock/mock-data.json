@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "userId": "vnoriega",
+    "medicine": "Tendiren",
+    "short": "Pick before each lunch",
+    "alarm": "15:47:37",
+    "days": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    "status": "completed"
+  },
+  {
+    "id": 2,
+    "userId": "vnoriega",
+    "medicine": "Hialoflex",
+    "short": "Eat food one hour later",
+    "alarm": "09:00:00",
+    "days": ["Monday", "Tuesday", "Friday", "Thursday"],
+    "status": "pending"
+  }
+]
