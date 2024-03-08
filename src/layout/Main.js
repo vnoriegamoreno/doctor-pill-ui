@@ -9,6 +9,7 @@ const fakeAPI = async () =>
   });
 
 function Main() {
+  // TODO: should refactor states and actions into reducers
   const [pills, setPills] = useState([]);
   const [tags, setTags] = useState([]);
 
@@ -16,6 +17,7 @@ function Main() {
     fakeAPI().then((d) => setPills(d));
   }, []);
 
+  // TODO: active status filter should be only applied to one tag
   const handleTags = (e) => {
     const className =
       e.target.className !== "tags"
@@ -37,7 +39,20 @@ function Main() {
     setTags(updatedTag);
   };
 
-  /* TODO: wrap header, tags and main in diff components */
+  const actionHandler = ({ id, option }) => {
+    const statusOptions = ["completed", "pending"];
+    if (statusOptions.includes(option)) {
+      setPills(
+        pills.map((pill) => ({
+          ...pill,
+          status: pill.id === id ? option : pill.status,
+        }))
+      );
+    }
+    // TODO: Should handle actions as "Edit" and "Remove" above
+  };
+
+  // TODO: wrap header, tags and main in components
   return (
     <>
       <header>
@@ -52,7 +67,14 @@ function Main() {
           {pills.length ? (
             pills
               .filter((p) => (tags.length ? tags.includes(p.status) : p))
-              .map((pill) => <Pill {...pill} key={pill.id} />)
+              .map((pill) => (
+                <Pill
+                  {...pill}
+                  data-testid={pill.id}
+                  actionHandler={actionHandler}
+                  key={pill.id}
+                />
+              ))
           ) : (
             <p className="spinner">Loading ...</p>
           )}

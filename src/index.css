@@ -1,3 +1,4 @@
+/* TODO: should refactor all of the CSS code and move into SCSS */
 :root {
   --main-color-background: #282828;
   --main-color-font-base: #ffffff;
@@ -28,7 +29,7 @@ code {
 .tags {
   background-color: var(--main-color-pills-svg-bottom);
   padding: 5px;
-  margin: 10px;
+  margin: 10px 10px 20px 10px;
   border-radius: 10px;
 }
 
@@ -49,7 +50,6 @@ main {
   align-items: flex-start;
   display: flex;
   flex-direction: row;
-  height: calc(100vh - 144px);
 }
 
 aside {
@@ -188,7 +188,7 @@ h1 {
   border-radius: 15px;
   display: flex;
   margin: 0px 5px 20px 5px;
-  height: 130px;
+  height: 110px;
 }
 
 .pill .generic-pill {
@@ -199,27 +199,37 @@ h1 {
   display: flex;
   flex-direction: column;
   height: auto;
-  width: 130px;
+  width: 125px;
+}
+
+.pill .generic-pill .status {
+  background-color: var(--main-color-pills-svg-top);
+  border-radius: 15px 0 0 0;
+  color: var(--main-color-font-base);
+  font-weight: bold;
+  padding: 5px 5px;
+  width: calc(100% - 10px);
+  text-align: center;
 }
 
 .pill .generic-pill .top {
   background-color: var(--main-color-pills-svg-top);
   border-radius: 50% 50% 0 0;
-  height: 50px;
+  height: 35px;
   margin-left: 15px;
-  margin-top: 18px;
-  transform: rotate(20deg);
-  width: 55px;
+  margin-top: 7px;
+  transform: rotate(30deg);
+  width: 40px;
 }
 .pill .generic-pill .bottom {
   background-color: var(--main-color-pills-svg-bottom);
   border-radius: 0 0 50% 50%;
-  bottom: 3px;
-  height: 50px;
-  margin-left: -19px;
+  bottom: 5px;
+  height: 35px;
+  margin-left: -20px;
   position: relative;
-  transform: rotate(20deg);
-  width: 55px;
+  transform: rotate(30deg);
+  width: 40px;
 }
 
 .pill .description {
@@ -235,7 +245,7 @@ h1 {
   margin-bottom: 2px;
 }
 
-.pill .description .status {
+/* .pill .description .status {
   background-color: var(--main-color-pills-svg-top);
   border-radius: 0 14px 14px 0;
   color: var(--main-color-font-base);
@@ -243,7 +253,7 @@ h1 {
   margin-top: 4px;
   padding: 5px 10px;
   width: calc(170px - 20px);
-}
+} */
 
 .pill .option {
   display: flex;
@@ -252,26 +262,71 @@ h1 {
   padding-right: 15px;
 }
 
-.pill .option .action-bar {
+.action-bar-wrapper {
+  position: relative;
+}
+
+.pill .option .action-bar-wrapper .action-bar {
   cursor: pointer;
 }
 
-.pill .option .action-bar .menu {
+.pill .option .action-bar-wrapper .action-bar .icon-menu {
   background-color: var(--main-color-pills-svg-top);
   border-radius: 14px;
   color: var(--main-color-font-base);
-  height: 50px;
+  height: 40px;
   padding: 0px;
   position: relative;
   width: 27px;
 }
 
-.pill .option .action-bar .menu span {
+.pill .option .action-bar-wrapper .action-bar .icon-menu span {
   display: block;
   font-size: 32px;
   font-weight: bold;
   left: 11.5px;
   position: absolute;
-  top: 6px;
+  top: 1px;
   transform: rotate(90deg);
+}
+
+.pill .option .action-bar-wrapper .menu.inactive {
+  display: none;
+}
+
+.pill .option .action-bar-wrapper .menu {
+  left: -210px;
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  position: absolute;
+  top: -5px;
+  width: 190px;
+}
+
+.pill .option .action-bar-wrapper .menu::after {
+  border-bottom: 20px solid transparent;
+  border-left: 20px solid var(--main-color-pills-svg-top);
+  border-right: 20px solid transparent;
+  border-top: 20px solid transparent;
+  clear: both;
+  content: " ";
+  height: 0;
+  position: absolute;
+  right: -35px;
+  top: 10px;
+  width: 0;
+}
+
+.pill .option .action-bar-wrapper .menu li {
+  background-color: var(--main-color-pills-svg-top);
+  color: var(--main-color-font-base);
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: -1px;
+  padding: 5px 10px;
+}
+
+.pill .option .action-bar-wrapper .menu li:hover {
+  color: var(--main-color-background);
 }
